@@ -70,19 +70,19 @@
     Conclusion
          Spring Cloud simplifies the development of microservices by providing essential tools for configuration management, service discovery, routing, load balancing, and resilience. Its integration with the Spring ecosystem makes it a powerful choice for building cloud-native applications that are scalable, maintainable, and efficient.
 
-    7. Drawback of using Microservice Architecture
-         A. Increased Complexity: Microservices introduce more complexity compared to monolithic architectures. Breaking an application into numerous smaller services makes the overall system more intricate. Understanding the interactions between different services can be challenging.
-         B. Communication Overhead: Communication between microservices often occurs over a network, leading to latency, network failures, and increased traffic. This can degrade performance, especially for latency-sensitive operations.
-         C. Data Management Challenges: Microservices may have their own databases, complicating data consistency across services. Maintaining data integrity requires additional effort, especially during updates or migrations.
-         D. Versioning and Compatibility Issues: As microservices interact through APIs, changes in one service may have implications for others. This can lead to versioning challenges and potential compatibility problems during upgrades or service changes.
-         E. Increased Resource Usage: Running multiple microservice instances consumes more resources than a single monolithic application in most cases. This can increase infrastructure costs if not managed efficiently.
-         F. Debugging and Monitoring Complexity: Debugging issues across a distributed system with many moving parts is more difficult than in a monolithic architecture. Monitoring the health and performance of individual services also requires additional tooling and processes.
-         G. Organizational and Cultural Challenges: Adopting microservices requires changes to team structures, processes, and tooling. It may necessitate investments in training and recruiting specialized DevOps talent to manage the increased complexity.
+ 7. Drawback of using Microservice Architecture
+     A. Increased Complexity: Microservices introduce more complexity compared to monolithic architectures. Breaking an application into numerous smaller services makes the overall system more intricate. Understanding the interactions between different services can be challenging.
+     B. Communication Overhead: Communication between microservices often occurs over a network, leading to latency, network failures, and increased traffic. This can degrade performance, especially for latency-sensitive operations.
+     C. Data Management Challenges: Microservices may have their own databases, complicating data consistency across services. Maintaining data integrity requires additional effort, especially during updates or migrations.
+     D. Versioning and Compatibility Issues: As microservices interact through APIs, changes in one service may have implications for others. This can lead to versioning challenges and potential compatibility problems during upgrades or service changes.
+     E. Increased Resource Usage: Running multiple microservice instances consumes more resources than a single monolithic application in most cases. This can increase infrastructure costs if not managed efficiently.
+     F. Debugging and Monitoring Complexity: Debugging issues across a distributed system with many moving parts is more difficult than in a monolithic architecture. Monitoring the health and performance of individual services also requires additional tooling and processes.
+     G. Organizational and Cultural Challenges: Adopting microservices requires changes to team structures, processes, and tooling. It may necessitate investments in training and recruiting specialized DevOps talent to manage the increased complexity.
 
-         While microservices offer benefits like scalability and flexibility, organizations must carefully weigh these advantages against the drawbacks, especially for smaller projects where the complexity may outweigh the benefits. Proper planning, automation, and monitoring are key to successfully managing a microservices architecture.
+     While microservices offer benefits like scalability and flexibility, organizations must carefully weigh these advantages against the drawbacks, especially for smaller projects where the complexity may outweigh the benefits. Proper planning, automation, and monitoring are key to successfully managing a microservices architecture.
 
-    8. Eureka
-     It is a service discovery and registration framework developed by Netflix as part of their open-source software stack. Let me provide a more comprehensive overview:
+ 8. Eureka
+    It is a service discovery and registration framework developed by Netflix as part of their open-source software stack. Let me provide a more comprehensive overview:
 
     Key aspects of Eureka:
         A. Purpose:
@@ -113,6 +113,18 @@
             - Simplifies service-to-service communication in distributed systems.
             - Supports multiple data centers and regions.
             - Provides near real-time updates on service health and locations.
+
+9. Key Points:
+     - Some API Gateways have built-in service discovery capabilities.
+     - Others can integrate with external service discovery tools like Consul, Eureka, or etcd.
+     - In some architectures, the API Gateway queries the service registry to get the locations of microservices.
+     - Alternatively, the service registry can push updates to the API Gateway when service locations change.
+     - Service discovery is primarily used by the API Gateway to find microservices, not for clients to find the gateway.
+
+ 10. Example:
+     - Order Service -> Eureka Server -> "Where is Payment Service?"
+     - Eureka Server -> Order Service -> "Payment Service is at http://10.0.0.1:8080"
+     - Order Service -> Payment Service -> Makes actual API call
 
  */
 
